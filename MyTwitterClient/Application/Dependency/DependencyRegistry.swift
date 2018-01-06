@@ -19,6 +19,9 @@ class DependencyRegistry {
     }
 
     static private func setupInfrastructure() {
+        defaultContainer.register(ConsumerKeyPair.self) { r in
+            ConsumerKeyPair.load()!
+        }
     }
 
     static private func setupRepositories() {

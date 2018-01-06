@@ -20,6 +20,7 @@
 		9A2C80A31FFE3AA100D8CC7B /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */; };
 		9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1D3362000E4470056DD6E /* Twitter.plist */; };
 		9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1785CF1FFF88CB00009515 /* TwitterShareExtensionUI.framework */; };
+		B582F1C69DB93CA4478D8132 /* ConsumerKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */; };
 		B582F497CC511304078845DE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F48E239E3068129B9BBE /* TimelineViewController.swift */; };
 		B582F9C6CAAD270C1BB6CA19 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F164E149664B8CFC1142 /* DependencyRegistry.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		9A2C809B1FFE3AA100D8CC7B /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		9AF1D3362000E4470056DD6E /* Twitter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Twitter.plist; sourceTree = "<group>"; };
+		B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumerKeyPair.swift; sourceTree = "<group>"; };
 		B582F164E149664B8CFC1142 /* DependencyRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		B582F48E239E3068129B9BBE /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 				9AF1D3362000E4470056DD6E /* Twitter.plist */,
 				B582FC3E27AFD1FD2ED951B2 /* Presentation */,
 				B582FE9C0AABFE8085FFC9CB /* Application */,
+				B582F9B065675EF82015E5D9 /* Infrastructure */,
 			);
 			path = MyTwitterClient;
 			sourceTree = "<group>";
@@ -122,6 +125,14 @@
 			path = Timeline;
 			sourceTree = "<group>";
 		};
+		B582F9B065675EF82015E5D9 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				B582FDA1B8E250C702403484 /* Credentials */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
 		B582FC3E27AFD1FD2ED951B2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +147,14 @@
 				B582F164E149664B8CFC1142 /* DependencyRegistry.swift */,
 			);
 			path = Dependency;
+			sourceTree = "<group>";
+		};
+		B582FDA1B8E250C702403484 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */,
+			);
+			path = Credentials;
 			sourceTree = "<group>";
 		};
 		B582FE9C0AABFE8085FFC9CB /* Application */ = {
@@ -249,6 +268,7 @@
 				9A2C80831FFCF99400D8CC7B /* AppDelegate.swift in Sources */,
 				B582F497CC511304078845DE /* TimelineViewController.swift in Sources */,
 				B582F9C6CAAD270C1BB6CA19 /* DependencyRegistry.swift in Sources */,
+				B582F1C69DB93CA4478D8132 /* ConsumerKeyPair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
