@@ -6,6 +6,7 @@
 import Swinject
 import SwinjectStoryboard
 import UIKit
+import TwitterKit
 
 class DependencyRegistry {
     static let defaultContainer = SwinjectStoryboard.defaultContainer
@@ -19,6 +20,10 @@ class DependencyRegistry {
     }
 
     static private func setupInfrastructure() {
+        defaultContainer.register(TWTRTwitter.self) { r in
+            TWTRTwitter.sharedInstance()
+        }.inObjectScope(.container)
+
         defaultContainer.register(ConsumerKeyPair.self) { r in
             ConsumerKeyPair.load()!
         }.inObjectScope(.container)
@@ -28,11 +33,14 @@ class DependencyRegistry {
     }
 
     static private func setupUseCases() {
+        defaultContainer.register(LoginUseCase.self) { r in
+            LoginUseCase(twitter: r.resolve(TWTRTwitter.self)!)
+        }.inObjectScope(.container)
     }
 
     static private func setupViewModels() {
         defaultContainer.register(TimelineViewModel.self) { r in
-            TimelineViewModel()
+            TimelineViewModel(loginUseCase: r.resolve(LoginUseCase.self)!)
         }.inObjectScope(.transient)
     }
 

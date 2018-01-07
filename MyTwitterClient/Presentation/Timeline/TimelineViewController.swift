@@ -17,7 +17,13 @@ class TimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.isProcessing.subscribe(onNext: { isProcessing in
+            // TODO: Show activity indicator
+            print("isProcessing: \(isProcessing)")
+        }).disposed(by: disposeBag)
+
         viewModel.error.subscribe(onNext: { error in
+            // TODO: Show alert dialog
             print(error)
         }).disposed(by: disposeBag)
     }

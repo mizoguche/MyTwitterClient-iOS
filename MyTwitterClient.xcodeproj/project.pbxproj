@@ -22,6 +22,7 @@
 		9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1785CF1FFF88CB00009515 /* TwitterShareExtensionUI.framework */; };
 		B582F163128A28BF80FB8F66 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */; };
 		B582F1C69DB93CA4478D8132 /* ConsumerKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */; };
+		B582F3975960B35AD1FB59D8 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */; };
 		B582F497CC511304078845DE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F48E239E3068129B9BBE /* TimelineViewController.swift */; };
 		B582F9C6CAAD270C1BB6CA19 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F164E149664B8CFC1142 /* DependencyRegistry.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumerKeyPair.swift; sourceTree = "<group>"; };
 		B582F164E149664B8CFC1142 /* DependencyRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		B582F48E239E3068129B9BBE /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B582F572374D4285451F3E85 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		B582F670B6A8F281300000C9 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				B582FC8C191A2D121D10839F /* Dependency */,
+				B582F572374D4285451F3E85 /* UseCase */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -273,6 +284,7 @@
 				B582F9C6CAAD270C1BB6CA19 /* DependencyRegistry.swift in Sources */,
 				B582F1C69DB93CA4478D8132 /* ConsumerKeyPair.swift in Sources */,
 				B582F163128A28BF80FB8F66 /* TimelineViewModel.swift in Sources */,
+				B582F3975960B35AD1FB59D8 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
