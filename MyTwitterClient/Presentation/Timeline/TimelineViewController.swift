@@ -7,22 +7,24 @@
 //
 
 import UIKit
-import TwitterKit
+import RxSwift
 
 class TimelineViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+
+    var viewModel: TimelineViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        TWTRTwitter.sharedInstance().logIn { [weak self] (session, error) in
-            print("login callback")
-            if let error = error, let weakSelf = self {
-                print(error)
-            } else if let session = session, let weakSelf = self {
-                print(session.authToken)
-                print(session.authTokenSecret)
-            }
-        }
+        viewModel.error.subscribe(onNext: { error in
+            print(error)
+        }).disposed(by: disposeBag)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.login()
+    }
 }

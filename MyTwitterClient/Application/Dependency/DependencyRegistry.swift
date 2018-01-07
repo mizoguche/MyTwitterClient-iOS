@@ -21,7 +21,7 @@ class DependencyRegistry {
     static private func setupInfrastructure() {
         defaultContainer.register(ConsumerKeyPair.self) { r in
             ConsumerKeyPair.load()!
-        }
+        }.inObjectScope(.container)
     }
 
     static private func setupRepositories() {
@@ -31,11 +31,14 @@ class DependencyRegistry {
     }
 
     static private func setupViewModels() {
+        defaultContainer.register(TimelineViewModel.self) { r in
+            TimelineViewModel()
+        }.inObjectScope(.transient)
     }
 
     static private func setupViewControllers() {
         defaultContainer.storyboardInitCompleted(TimelineViewController.self) { r, controller in
-            // TODO Inject ViewModel
+            controller.viewModel = r.resolve(TimelineViewModel.self)
         }
     }
 }
