@@ -3,9 +3,10 @@
 // Copyright (c) 2018 Cluster, Inc. All rights reserved.
 //
 
-import Foundation
+class Tweets {
+    private let value: [Tweet]
 
-struct ScreenName {
-    let value: String
-    static let Empty = ScreenName(value: "")
+    init(tweets: [Tweet] = []) {
+        self.value = tweets
+    }
 }
