@@ -4,38 +4,26 @@
 //
 
 import RxSwift
-import TwitterKit
-
-class LoginFailedError: Error {
-}
 
 class LoginUseCase {
-    private let twitter: TWTRTwitter
+    private let sessionRepository: SessionRepository
 
-    init(twitter: TWTRTwitter) {
-        self.twitter = twitter
+    init(sessionRepository: SessionRepository) {
+        self.sessionRepository = sessionRepository
     }
 
     func login() -> Observable<Void> {
         return Observable.create { [weak self] observer in
-            if self?.twitter.sessionStore.existingUserSessions().count == 0 {
-                self?.twitter.logIn { (session, error) in
-                    if let error = error {
+            _ = self?.sessionRepository.get().subscribe(
+                    onNext: { session in
+                        print("logged in as @\(session.screenName.value)")
+                        observer.onNext(())
+                        observer.onCompleted()
+                    },
+                    onError: { error in
                         observer.onError(error)
                     }
-                }
-
-                observer.onNext(())
-                return Disposables.create()
-            }
-
-            guard let session = self?.twitter.sessionStore.existingUserSessions()[0] as? TWTRSession else {
-                observer.onError(LoginFailedError())
-                return Disposables.create()
-            }
-
-            print(session)
-            observer.onNext(())
+            )
             return Disposables.create()
         }
     }
