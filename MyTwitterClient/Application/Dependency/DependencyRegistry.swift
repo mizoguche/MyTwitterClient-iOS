@@ -27,6 +27,10 @@ class DependencyRegistry {
         defaultContainer.register(ConsumerKeyPair.self) { r in
             ConsumerKeyPair.load()!
         }.inObjectScope(.container)
+
+        defaultContainer.register(TwitterApiClient.self) { r in
+            TwitterApiClient.init(key: r.resolve(ConsumerKeyPair.self)!)
+        }.inObjectScope(.container)
     }
 
     static private func setupRepositories() {
@@ -35,7 +39,7 @@ class DependencyRegistry {
         }.inObjectScope(.container)
 
         defaultContainer.register(TweetRepository.self) { r in
-            TwitterKitTweetRepository(twitter: r.resolve(TWTRTwitter.self)!)
+            TwitterKitTweetRepository(twitter: r.resolve(TWTRTwitter.self)!, client: r.resolve(TwitterApiClient.self)!)
         }.inObjectScope(.container)
     }
 

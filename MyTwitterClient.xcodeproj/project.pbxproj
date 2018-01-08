@@ -21,6 +21,7 @@
 		9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1D3362000E4470056DD6E /* Twitter.plist */; };
 		9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1785CF1FFF88CB00009515 /* TwitterShareExtensionUI.framework */; };
 		9AF1D33A200382D10056DD6E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF1D339200382D10056DD6E /* Alamofire.framework */; };
+		B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */; };
 		B582F07103AA91DC3563C532 /* TwitterKitSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */; };
 		B582F163128A28BF80FB8F66 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */; };
 		B582F1C69DB93CA4478D8132 /* ConsumerKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */; };
@@ -68,6 +69,7 @@
 		B582FA68611CB81802B0DAA9 /* TwitterKitTweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKitTweetRepository.swift; sourceTree = "<group>"; };
 		B582FCA0BB5E787C93B1B197 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		B582FCF676674105E3BFDB85 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			children = (
 				B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */,
 				B582FA68611CB81802B0DAA9 /* TwitterKitTweetRepository.swift */,
+				B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				B582FA860C1EAB578072E30E /* TweetRepository.swift in Sources */,
 				B582FED62031D5CA399634BF /* Tweets.swift in Sources */,
 				B582F258F969ACB22AF56579 /* TwitterKitTweetRepository.swift in Sources */,
+				B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
