@@ -34,6 +34,10 @@ class DependencyRegistry {
     }
 
     static private func setupRepositories() {
+        defaultContainer.register(TwitterKitSessionRepository.self) { r in
+            TwitterKitSessionRepository(twitter: r.resolve(TWTRTwitter.self)!)
+        }.inObjectScope(.container)
+
         defaultContainer.register(SessionRepository.self) { r in
             TwitterKitSessionRepository(twitter: r.resolve(TWTRTwitter.self)!)
         }.inObjectScope(.container)
@@ -55,7 +59,7 @@ class DependencyRegistry {
 
     static private func setupViewModels() {
         defaultContainer.register(TimelineViewModel.self) { r in
-            TimelineViewModel(loginUseCase: r.resolve(LoginUseCase.self)!)
+            TimelineViewModel(loginUseCase: r.resolve(LoginUseCase.self)!, getHomeTimelineUseCase: r.resolve(GetHomeTimelineUseCase.self)!)
         }.inObjectScope(.transient)
     }
 

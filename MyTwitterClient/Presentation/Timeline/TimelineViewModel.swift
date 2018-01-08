@@ -9,6 +9,7 @@ import TwitterKit
 class TimelineViewModel {
     private let disposeBag = DisposeBag()
     private let loginUseCase: LoginUseCase
+    private let getHomeTimelineUseCase: GetHomeTimelineUseCase
 
     private let isProcessingVar = Variable<Bool>(false)
     var isProcessing: Observable<Bool> {
@@ -20,20 +21,42 @@ class TimelineViewModel {
         return errorSubject
     }
 
-    init(loginUseCase: LoginUseCase) {
+    private let sessionVar = Variable<Session?>(nil)
+    var session: Observable<Session?> {
+        return sessionVar.asObservable()
+    }
+
+    init(loginUseCase: LoginUseCase, getHomeTimelineUseCase: GetHomeTimelineUseCase) {
         self.loginUseCase = loginUseCase
+        self.getHomeTimelineUseCase = getHomeTimelineUseCase
     }
 
     func login() {
         isProcessingVar.value = true
         self.loginUseCase.login().subscribe(
-                onNext: { [weak self] _ in
+                onNext: { [weak self] session in
                     self?.isProcessingVar.value = false
+                    self?.sessionVar.value = session
                 },
                 onError: { [weak self] error in
                     self?.isProcessingVar.value = false
                     self?.errorSubject.onNext(error)
                 }
         ).disposed(by: disposeBag)
+    }
+
+    func getHomeTimeline() {
+        guard let sess = sessionVar.value else {
+            return
+        }
+        self.getHomeTimelineUseCase.get(session: sess)
+                .subscribe(
+                        onNext: { _ in
+
+                        },
+                        onError: { [weak self] error in
+                            self?.errorSubject.onNext(error)
+                        }
+                ).disposed(by: disposeBag)
     }
 }

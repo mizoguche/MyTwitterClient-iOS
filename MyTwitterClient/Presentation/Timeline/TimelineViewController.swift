@@ -26,6 +26,12 @@ class TimelineViewController: UIViewController {
             // TODO: Show alert dialog
             print(error)
         }).disposed(by: disposeBag)
+
+        viewModel.session.filter {
+            $0 != nil
+        }.subscribe(onNext: { [weak self] _ in
+            self?.viewModel.getHomeTimeline()
+        }).disposed(by: disposeBag)
     }
 
     override func viewDidAppear(_ animated: Bool) {

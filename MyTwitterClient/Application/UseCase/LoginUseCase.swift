@@ -13,12 +13,11 @@ class LoginUseCase {
         self.sessionRepository = sessionRepository
     }
 
-    func login() -> Observable<Void> {
-        return Observable.create { [weak self] observer in
-            _ = self?.sessionRepository.get().subscribe(
+    func login() -> Observable<Session> {
+        return Observable.create { observer in
+            _ = self.sessionRepository.get().subscribe(
                     onNext: { session in
-                        print("logged in as @\(session.screenName.value)")
-                        observer.onNext(())
+                        observer.onNext(session)
                         observer.onCompleted()
                     },
                     onError: { error in

@@ -32,12 +32,12 @@ class TwitterApiClient {
         let headers = createAuthorizationHeader(url: url, session: session)
         return Observable.create { observer in
             Alamofire.request(url, headers: headers).responseJSON { response in
-                guard response.error != nil else {
+                guard response.error == nil else {
                     observer.onError(response.error!)
                     return
                 }
 
-                guard response.result.error != nil else {
+                guard response.result.error == nil else {
                     observer.onError(response.result.error!)
                     return
                 }
