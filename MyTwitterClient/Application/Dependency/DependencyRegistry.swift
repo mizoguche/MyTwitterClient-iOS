@@ -33,6 +33,10 @@ class DependencyRegistry {
         defaultContainer.register(SessionRepository.self) { r in
             TwitterKitSessionRepository(twitter: r.resolve(TWTRTwitter.self)!)
         }.inObjectScope(.container)
+
+        defaultContainer.register(TweetRepository.self) { r in
+            TwitterKitTweetRepository(twitter: r.resolve(TWTRTwitter.self)!)
+        }.inObjectScope(.container)
     }
 
     static private func setupUseCases() {

@@ -3,8 +3,8 @@
 // Copyright (c) 2018 Cluster, Inc. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
 protocol TweetRepository {
-    func getHomeTimeline() -> Tweets
+    func getHomeTimeline() -> Observable<Tweets>
 }
