@@ -6,5 +6,5 @@
 import RxSwift
 
 protocol TweetRepository {
-    func getHomeTimeline() -> Observable<Tweets>
+    func getHomeTimeline(session: Session) -> Observable<Tweets>
 }

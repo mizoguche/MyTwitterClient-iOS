@@ -16,7 +16,7 @@ class TwitterKitSessionRepository: SessionRepository {
         self.twitter = twitter
     }
 
-    var currentSession: Session? = nil
+    private var currentSession: Session? = nil
 
     func get() -> Observable<Session> {
         return Observable.create { [weak self] observer in
@@ -55,5 +55,15 @@ class TwitterKitSessionRepository: SessionRepository {
             observer.onError(LoginFailedError())
             return Disposables.create()
         }
+    }
+
+    func findBy(session: Session) -> TWTRSession? {
+        let twitterSession = self.twitter.sessionStore.existingUserSessions().first { any in
+            if let twSession = any as? TWTRSession {
+                return twSession.userName == session.screenName.value
+            }
+            return false
+        }
+        return twitterSession as? TWTRSession
     }
 }

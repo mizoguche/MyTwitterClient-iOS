@@ -7,21 +7,31 @@ import RxSwift
 import TwitterKit
 import Alamofire
 
-private typealias Element = (key: AnyHashable, value: Any)
+class NoSessionError: Error {
+    let requestedSession: Session
+
+    init(requestedSession: Session) {
+        self.requestedSession = requestedSession
+    }
+}
 
 class TwitterKitTweetRepository: TweetRepository {
-    private let twitter: TWTRTwitter
+    private let sessionRepository: TwitterKitSessionRepository
     private let client: TwitterApiClient
 
-    init(twitter: TWTRTwitter, client: TwitterApiClient) {
-        self.twitter = twitter
+    init(client: TwitterApiClient, sessionRepository: TwitterKitSessionRepository) {
         self.client = client
+        self.sessionRepository = sessionRepository
     }
 
-    func getHomeTimeline() -> Observable<Tweets> {
-        let session = self.twitter.sessionStore.existingUserSessions()[0] as! TWTRSession
+    func getHomeTimeline(session: Session) -> Observable<Tweets> {
         return Observable.create { observer in
-            _ = self.client.get(path: "/1.1/statuses/home_timeline.json", session: session)
+            guard let twitterSession = self.sessionRepository.findBy(session: session) else {
+                observer.onError(NoSessionError(requestedSession: session))
+                return Disposables.create()
+            }
+
+            _ = self.client.get(path: "/1.1/statuses/home_timeline.json", session: twitterSession)
                     .subscribe(
                             onNext: { jsonArray in
                                 print(jsonArray)

@@ -39,13 +39,17 @@ class DependencyRegistry {
         }.inObjectScope(.container)
 
         defaultContainer.register(TweetRepository.self) { r in
-            TwitterKitTweetRepository(twitter: r.resolve(TWTRTwitter.self)!, client: r.resolve(TwitterApiClient.self)!)
+            TwitterKitTweetRepository(client: r.resolve(TwitterApiClient.self)!, sessionRepository: r.resolve(TwitterKitSessionRepository.self)!)
         }.inObjectScope(.container)
     }
 
     static private func setupUseCases() {
         defaultContainer.register(LoginUseCase.self) { r in
             LoginUseCase(sessionRepository: r.resolve(SessionRepository.self)!)
+        }.inObjectScope(.container)
+
+        defaultContainer.register(GetHomeTimelineUseCase.self) { r in
+            GetHomeTimelineUseCase(tweetRepository: r.resolve(TweetRepository.self)!)
         }.inObjectScope(.container)
     }
 

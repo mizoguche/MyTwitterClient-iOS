@@ -33,6 +33,7 @@
 		B582F7526C470865E187F1E3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FCF676674105E3BFDB85 /* Session.swift */; };
 		B582F9C6CAAD270C1BB6CA19 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F164E149664B8CFC1142 /* DependencyRegistry.swift */; };
 		B582FA860C1EAB578072E30E /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0EAAB5B464608A506E3 /* TweetRepository.swift */; };
+		B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */; };
 		B582FCC76FE2F91F6F4CDDB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FA5749D5E90724741FFD /* User.swift */; };
 		B582FED62031D5CA399634BF /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FCA0BB5E787C93B1B197 /* Tweets.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		9AF1D3362000E4470056DD6E /* Twitter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Twitter.plist; sourceTree = "<group>"; };
 		9AF1D339200382D10056DD6E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHomeTimelineUseCase.swift; sourceTree = "<group>"; };
 		B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKitSessionRepository.swift; sourceTree = "<group>"; };
 		B582F0E054FF7666B673E0E6 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */,
+				B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				B582FED62031D5CA399634BF /* Tweets.swift in Sources */,
 				B582F258F969ACB22AF56579 /* TwitterKitTweetRepository.swift in Sources */,
 				B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */,
+				B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
