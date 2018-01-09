@@ -32,6 +32,7 @@
 		B582F509AF5C4CE0B610D615 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0E054FF7666B673E0E6 /* Tweet.swift */; };
 		B582F6592FA283593A6E8EDC /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F2A3AD98F2E8F1900EC0 /* SessionRepository.swift */; };
 		B582F7526C470865E187F1E3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FCF676674105E3BFDB85 /* Session.swift */; };
+		B582F78D461579AF3A5A50D5 /* TwitterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FEDE4798933B0D9D1934 /* TwitterMapper.swift */; };
 		B582F9C6CAAD270C1BB6CA19 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F164E149664B8CFC1142 /* DependencyRegistry.swift */; };
 		B582FA860C1EAB578072E30E /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0EAAB5B464608A506E3 /* TweetRepository.swift */; };
 		B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */; };
@@ -74,6 +75,7 @@
 		B582FCA0BB5E787C93B1B197 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		B582FCF676674105E3BFDB85 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterApiClient.swift; sourceTree = "<group>"; };
+		B582FEDE4798933B0D9D1934 /* TwitterMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */,
 				B582FA68611CB81802B0DAA9 /* TwitterKitTweetRepository.swift */,
 				B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */,
+				B582FEDE4798933B0D9D1934 /* TwitterMapper.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				B582F258F969ACB22AF56579 /* TwitterKitTweetRepository.swift in Sources */,
 				B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */,
 				B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */,
+				B582F78D461579AF3A5A50D5 /* TwitterMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
