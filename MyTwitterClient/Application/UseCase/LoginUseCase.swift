@@ -14,17 +14,6 @@ class LoginUseCase {
     }
 
     func login() -> Observable<Session> {
-        return Observable.create { observer in
-            _ = self.sessionRepository.get().subscribe(
-                    onNext: { session in
-                        observer.onNext(session)
-                        observer.onCompleted()
-                    },
-                    onError: { error in
-                        observer.onError(error)
-                    }
-            )
-            return Disposables.create()
-        }
+        return self.sessionRepository.get()
     }
 }
