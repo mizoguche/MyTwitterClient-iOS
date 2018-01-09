@@ -5,3 +5,4 @@ github "xmartlabs/XLPagerTabStrip" ~> 8.0
 binary "https://ton.twimg.com/syndication/twitterkit/ios/TwitterKit.json"
 binary "https://ton.twimg.com/syndication/twitterkit/ios/TwitterCore.json"
 github "Alamofire/Alamofire" ~> 4.5
+github "SwiftyJSON/SwiftyJSON" ~> 4.0.0

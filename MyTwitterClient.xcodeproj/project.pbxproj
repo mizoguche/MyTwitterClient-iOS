@@ -21,6 +21,7 @@
 		9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1D3362000E4470056DD6E /* Twitter.plist */; };
 		9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1785CF1FFF88CB00009515 /* TwitterShareExtensionUI.framework */; };
 		9AF1D33A200382D10056DD6E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF1D339200382D10056DD6E /* Alamofire.framework */; };
+		9AF1D33C2004F3F00056DD6E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF1D33B2004F3F00056DD6E /* SwiftyJSON.framework */; };
 		B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */; };
 		B582F07103AA91DC3563C532 /* TwitterKitSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */; };
 		B582F163128A28BF80FB8F66 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */; };
@@ -57,6 +58,7 @@
 		9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		9AF1D3362000E4470056DD6E /* Twitter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Twitter.plist; sourceTree = "<group>"; };
 		9AF1D339200382D10056DD6E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		9AF1D33B2004F3F00056DD6E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHomeTimelineUseCase.swift; sourceTree = "<group>"; };
 		B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKitSessionRepository.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				9A1785D01FFF88CB00009515 /* TwitterKit.framework in Frameworks */,
 				9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */,
 				9AF1D33A200382D10056DD6E /* Alamofire.framework in Frameworks */,
+				9AF1D33C2004F3F00056DD6E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +134,7 @@
 		9A2C80951FFE3AA100D8CC7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AF1D33B2004F3F00056DD6E /* SwiftyJSON.framework */,
 				9AF1D339200382D10056DD6E /* Alamofire.framework */,
 				9A1785CE1FFF88CA00009515 /* TwitterCore.framework */,
 				9A1785CD1FFF88CA00009515 /* TwitterKit.framework */,
@@ -339,6 +343,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/TwitterKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TwitterShareExtensionUI.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			name = Carthage;
 			outputPaths = (
