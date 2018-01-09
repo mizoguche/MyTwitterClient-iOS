@@ -6,6 +6,10 @@
 import TwitterKit
 import Alamofire
 import RxSwift
+import SwiftyJSON
+
+class NoDataError: Error {
+}
 
 class TwitterApiClient {
     let config: TWTRAuthConfig
@@ -27,24 +31,29 @@ class TwitterApiClient {
         return headers
     }
 
-    func get(path: String, session: TWTRSession) -> Observable<Any> {
+    func get(path: String, session: TWTRSession) -> Observable<JSON> {
         let url = createUrlString(path: "/1.1/statuses/home_timeline.json")
         let headers = createAuthorizationHeader(url: url, session: session)
         return Observable.create { observer in
-            Alamofire.request(url, headers: headers).responseJSON { response in
+            Alamofire.request(url, headers: headers).response { response in
                 guard response.error == nil else {
                     observer.onError(response.error!)
                     return
                 }
 
-                guard response.result.error == nil else {
-                    observer.onError(response.result.error!)
+                guard let data = response.data else {
+                    observer.onError(NoDataError())
                     return
                 }
 
-                // I don't know when this force unwrap fails
-                observer.onNext(response.result.value!)
-                observer.onCompleted()
+                do {
+                    let json = try JSON(data: data)
+                    observer.onNext(json)
+                    observer.onCompleted()
+
+                } catch {
+                    observer.onError(NoDataError())
+                }
             }
             return Disposables.create()
         }

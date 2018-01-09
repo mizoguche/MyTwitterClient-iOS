@@ -51,8 +51,8 @@ class TimelineViewModel {
         }
         self.getHomeTimelineUseCase.get(session: sess)
                 .subscribe(
-                        onNext: { _ in
-
+                        onNext: { tweets in
+                            print(tweets.description)
                         },
                         onError: { [weak self] error in
                             self?.errorSubject.onNext(error)
