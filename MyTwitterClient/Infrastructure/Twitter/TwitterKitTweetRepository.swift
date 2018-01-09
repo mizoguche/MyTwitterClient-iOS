@@ -26,22 +26,13 @@ class TwitterKitTweetRepository: TweetRepository {
     }
 
     func getHomeTimeline(session: Session) -> Observable<Tweets> {
-        return Observable.create { observer in
-            guard let twitterSession = self.sessionRepository.findBy(session: session) else {
-                observer.onError(NoSessionError(requestedSession: session))
-                return Disposables.create()
-            }
-
-            _ = self.client.get(path: "/1.1/statuses/home_timeline.json", session: twitterSession)
-                    .subscribe(
-                            onNext: { json in
-                                observer.onNext(TwitterMapper.mapToTweets(json: json))
-                                observer.onCompleted()
-                            },
-                            onError: { error in
-                                observer.onError(error)
-                            })
-            return Disposables.create()
+        guard let twitterSession = self.sessionRepository.findBy(session: session) else {
+            return Observable.error(NoSessionError(requestedSession: session))
         }
+
+        return self.client.get(path: "/1.1/statuses/home_timeline.json", session: twitterSession)
+                .map {
+                    TwitterMapper.mapToTweets(json: $0)
+                }
     }
 }
