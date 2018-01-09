@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = storyboard.instantiateInitialViewController()
     }
 
-
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
     }

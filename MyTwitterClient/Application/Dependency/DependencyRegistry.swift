@@ -20,11 +20,11 @@ class DependencyRegistry {
     }
 
     static private func setupInfrastructure() {
-        defaultContainer.register(TWTRTwitter.self) { r in
+        defaultContainer.register(TWTRTwitter.self) { _ in
             TWTRTwitter.sharedInstance()
         }.inObjectScope(.container)
 
-        defaultContainer.register(ConsumerKeyPair.self) { r in
+        defaultContainer.register(ConsumerKeyPair.self) { _ in
             ConsumerKeyPair.load()!
         }.inObjectScope(.container)
 
