@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
         self.window = window
 
-        let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: DependencyRegistry.defaultContainer)
+        let storyboard = SwinjectStoryboard.create(name: "Timeline", bundle: nil, container: DependencyRegistry.defaultContainer)
         window.rootViewController = storyboard.instantiateInitialViewController()
     }
 

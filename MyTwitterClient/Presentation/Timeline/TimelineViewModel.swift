@@ -26,6 +26,11 @@ class TimelineViewModel {
         return sessionVar.asObservable()
     }
 
+    let tweetsVar = Variable<Tweets>(Tweets(tweets: []))
+    var tweets: Observable<Tweets> {
+        return tweetsVar.asObservable()
+    }
+
     init(loginUseCase: LoginUseCase, getHomeTimelineUseCase: GetHomeTimelineUseCase) {
         self.loginUseCase = loginUseCase
         self.getHomeTimelineUseCase = getHomeTimelineUseCase
@@ -51,8 +56,8 @@ class TimelineViewModel {
         }
         self.getHomeTimelineUseCase.get(session: sess)
                 .subscribe(
-                        onNext: { tweets in
-                            print(tweets.description)
+                        onNext: { [weak self] tweets in
+                            self?.tweetsVar.value = tweets
                         },
                         onError: { [weak self] error in
                             self?.errorSubject.onNext(error)
