@@ -4,6 +4,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class TimelineCell: UITableViewCell {
     static let identifier = "TimelineCell"
@@ -17,5 +19,11 @@ class TimelineCell: UITableViewCell {
         name.text = tweet.user.name.value
         screenName.text = "@\(tweet.user.screenName.value)"
         textBody.text = tweet.text.value
+
+        Alamofire.request(tweet.user.profileImageUrl).responseImage { [weak self] response in
+            if let image = response.result.value {
+                self?.profileImageView.image = image
+            }
+        }
     }
 }
