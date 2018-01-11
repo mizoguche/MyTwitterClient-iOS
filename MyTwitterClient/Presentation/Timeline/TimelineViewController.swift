@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UITableViewController {
     private let disposeBag = DisposeBag()
 
     var viewModel: TimelineViewModel!
@@ -32,11 +32,34 @@ class TimelineViewController: UIViewController {
         }.subscribe(onNext: { [weak self] _ in
             self?.viewModel.getHomeTimeline()
         }).disposed(by: disposeBag)
+
+        viewModel.tweets.subscribe(onNext: { [weak self] tweets in
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         viewModel.login()
+        let nib = UINib(nibName: "TimelineCell", bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: TimelineCell.identifier)
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+
+    override func tableView(_ table: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.tweetsVar.value.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TimelineCell.identifier) as! TimelineCell
+        let tweet = self.viewModel.tweetsVar.value[indexPath.row]
+        cell.show(tweet: tweet)
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

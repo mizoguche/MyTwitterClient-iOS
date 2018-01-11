@@ -12,7 +12,17 @@ class Tweets {
         }.joined(separator: "\n")
     }
 
+    var count: Int {
+        return value.count
+    }
+
     init(tweets: [Tweet] = []) {
         self.value = tweets
+    }
+
+    subscript(index: Int) -> Tweet {
+        get {
+            return self.value[index]
+        }
     }
 }

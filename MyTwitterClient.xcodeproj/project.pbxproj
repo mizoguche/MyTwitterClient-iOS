@@ -18,16 +18,19 @@
 		9A2C80A01FFE3AA100D8CC7B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C80991FFE3AA100D8CC7B /* RxCocoa.framework */; };
 		9A2C80A21FFE3AA100D8CC7B /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C809B1FFE3AA100D8CC7B /* SwinjectStoryboard.framework */; };
 		9A2C80A31FFE3AA100D8CC7B /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */; };
+		9A9DB8DA20071352008E1AD1 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9DB8D920071352008E1AD1 /* TimelineCell.xib */; };
 		9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1D3362000E4470056DD6E /* Twitter.plist */; };
 		9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1785CF1FFF88CB00009515 /* TwitterShareExtensionUI.framework */; };
 		9AF1D33A200382D10056DD6E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF1D339200382D10056DD6E /* Alamofire.framework */; };
 		9AF1D33C2004F3F00056DD6E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF1D33B2004F3F00056DD6E /* SwiftyJSON.framework */; };
+		9AF1D33F200650F60056DD6E /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1D33E200650F60056DD6E /* Timeline.storyboard */; };
 		B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */; };
 		B582F07103AA91DC3563C532 /* TwitterKitSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */; };
 		B582F163128A28BF80FB8F66 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */; };
 		B582F1C69DB93CA4478D8132 /* ConsumerKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F11BA5C1EF560E3AE9C1 /* ConsumerKeyPair.swift */; };
 		B582F258F969ACB22AF56579 /* TwitterKitTweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FA68611CB81802B0DAA9 /* TwitterKitTweetRepository.swift */; };
 		B582F3975960B35AD1FB59D8 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */; };
+		B582F496B2BDBA8BAFA27739 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F6E98576382F278A2E56 /* TimelineCell.swift */; };
 		B582F497CC511304078845DE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F48E239E3068129B9BBE /* TimelineViewController.swift */; };
 		B582F509AF5C4CE0B610D615 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F0E054FF7666B673E0E6 /* Tweet.swift */; };
 		B582F6592FA283593A6E8EDC /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F2A3AD98F2E8F1900EC0 /* SessionRepository.swift */; };
@@ -38,6 +41,7 @@
 		B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */; };
 		B582FCC76FE2F91F6F4CDDB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FA5749D5E90724741FFD /* User.swift */; };
 		B582FED62031D5CA399634BF /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FCA0BB5E787C93B1B197 /* Tweets.swift */; };
+		B582FF83D6CCE82BF7E26B3F /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FC68704FA6CBC3A142C6 /* TimelineDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,9 +61,11 @@
 		9A2C809A1FFE3AA100D8CC7B /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		9A2C809B1FFE3AA100D8CC7B /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		9A9DB8D920071352008E1AD1 /* TimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
 		9AF1D3362000E4470056DD6E /* Twitter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Twitter.plist; sourceTree = "<group>"; };
 		9AF1D339200382D10056DD6E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9AF1D33B2004F3F00056DD6E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		9AF1D33E200650F60056DD6E /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHomeTimelineUseCase.swift; sourceTree = "<group>"; };
 		B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		B582F0DA204B07939136B89B /* TwitterKitSessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKitSessionRepository.swift; sourceTree = "<group>"; };
@@ -70,8 +76,10 @@
 		B582F2A3AD98F2E8F1900EC0 /* SessionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
 		B582F48E239E3068129B9BBE /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		B582F6E98576382F278A2E56 /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		B582FA5749D5E90724741FFD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B582FA68611CB81802B0DAA9 /* TwitterKitTweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKitTweetRepository.swift; sourceTree = "<group>"; };
+		B582FC68704FA6CBC3A142C6 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDataSource.swift; sourceTree = "<group>"; };
 		B582FCA0BB5E787C93B1B197 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		B582FCF676674105E3BFDB85 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B582FD06D228BDF332887FA6 /* TwitterApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterApiClient.swift; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 				B582FE9C0AABFE8085FFC9CB /* Application */,
 				B582F9B065675EF82015E5D9 /* Infrastructure */,
 				B582F44B830CCE7988B50496 /* Domain */,
+				9AF1D33D200650D10056DD6E /* Storyvboard */,
 			);
 			path = MyTwitterClient;
 			sourceTree = "<group>";
@@ -150,6 +159,15 @@
 				9A2C80971FFE3AA100D8CC7B /* XLPagerTabStrip.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AF1D33D200650D10056DD6E /* Storyvboard */ = {
+			isa = PBXGroup;
+			children = (
+				9AF1D33E200650F60056DD6E /* Timeline.storyboard */,
+				9A9DB8D920071352008E1AD1 /* TimelineCell.xib */,
+			);
+			path = Storyvboard;
 			sourceTree = "<group>";
 		};
 		B582F360E7AB3AFA4CF9CB30 /* Session */ = {
@@ -214,6 +232,8 @@
 			children = (
 				B582F48E239E3068129B9BBE /* TimelineViewController.swift */,
 				B582F0B4DDE6A53A9DDA8954 /* TimelineViewModel.swift */,
+				B582FC68704FA6CBC3A142C6 /* TimelineDataSource.swift */,
+				B582F6E98576382F278A2E56 /* TimelineCell.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -322,6 +342,8 @@
 			files = (
 				9A2C808D1FFCF99400D8CC7B /* LaunchScreen.storyboard in Resources */,
 				9A2C808A1FFCF99400D8CC7B /* Assets.xcassets in Resources */,
+				9A9DB8DA20071352008E1AD1 /* TimelineCell.xib in Resources */,
+				9AF1D33F200650F60056DD6E /* Timeline.storyboard in Resources */,
 				9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */,
 				9A2C80881FFCF99400D8CC7B /* Main.storyboard in Resources */,
 			);
@@ -347,6 +369,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/TwitterShareExtensionUI.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -379,6 +402,8 @@
 				B582F0357627BDAC0AF805DC /* TwitterApiClient.swift in Sources */,
 				B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */,
 				B582F78D461579AF3A5A50D5 /* TwitterMapper.swift in Sources */,
+				B582FF83D6CCE82BF7E26B3F /* TimelineDataSource.swift in Sources */,
+				B582F496B2BDBA8BAFA27739 /* TimelineCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
