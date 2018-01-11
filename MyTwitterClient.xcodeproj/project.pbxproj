@@ -18,6 +18,7 @@
 		9A2C80A01FFE3AA100D8CC7B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C80991FFE3AA100D8CC7B /* RxCocoa.framework */; };
 		9A2C80A21FFE3AA100D8CC7B /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C809B1FFE3AA100D8CC7B /* SwinjectStoryboard.framework */; };
 		9A2C80A31FFE3AA100D8CC7B /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */; };
+		9A9DB8DA20071352008E1AD1 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9DB8D920071352008E1AD1 /* TimelineCell.xib */; };
 		9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1D3362000E4470056DD6E /* Twitter.plist */; };
 		9AF1D3382000F2330056DD6E /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1785CF1FFF88CB00009515 /* TwitterShareExtensionUI.framework */; };
 		9AF1D33A200382D10056DD6E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF1D339200382D10056DD6E /* Alamofire.framework */; };
@@ -60,6 +61,7 @@
 		9A2C809A1FFE3AA100D8CC7B /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		9A2C809B1FFE3AA100D8CC7B /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		9A2C809C1FFE3AA100D8CC7B /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		9A9DB8D920071352008E1AD1 /* TimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
 		9AF1D3362000E4470056DD6E /* Twitter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Twitter.plist; sourceTree = "<group>"; };
 		9AF1D339200382D10056DD6E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9AF1D33B2004F3F00056DD6E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				9AF1D33E200650F60056DD6E /* Timeline.storyboard */,
+				9A9DB8D920071352008E1AD1 /* TimelineCell.xib */,
 			);
 			path = Storyvboard;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			files = (
 				9A2C808D1FFCF99400D8CC7B /* LaunchScreen.storyboard in Resources */,
 				9A2C808A1FFCF99400D8CC7B /* Assets.xcassets in Resources */,
+				9A9DB8DA20071352008E1AD1 /* TimelineCell.xib in Resources */,
 				9AF1D33F200650F60056DD6E /* Timeline.storyboard in Resources */,
 				9AF1D3372000E4470056DD6E /* Twitter.plist in Resources */,
 				9A2C80881FFCF99400D8CC7B /* Main.storyboard in Resources */,

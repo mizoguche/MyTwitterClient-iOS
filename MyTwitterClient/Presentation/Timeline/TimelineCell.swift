@@ -19,6 +19,7 @@ class TimelineCell: UITableViewCell {
         name.text = tweet.user.name.value
         screenName.text = "@\(tweet.user.screenName.value)"
         textBody.text = tweet.text.value
+        textBody.sizeToFit()
 
         Alamofire.request(tweet.user.profileImageUrl).responseImage { [weak self] response in
             if let image = response.result.value {

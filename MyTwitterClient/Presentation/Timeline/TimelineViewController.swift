@@ -42,6 +42,9 @@ class TimelineViewController: UITableViewController {
         super.viewDidAppear(animated)
 
         viewModel.login()
+        let nib = UINib(nibName: "TimelineCell", bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: TimelineCell.identifier)
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func tableView(_ table: UITableView,
@@ -54,5 +57,9 @@ class TimelineViewController: UITableViewController {
         let tweet = self.viewModel.tweetsVar.value[indexPath.row]
         cell.show(tweet: tweet)
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
