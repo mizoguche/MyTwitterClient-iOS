@@ -35,4 +35,21 @@ class TwitterKitTweetRepository: TweetRepository {
                     TwitterMapper.mapToTweets(json: $0)
                 }
     }
+
+    func like(tweet: Tweet, session: Session) -> Observable<Void> {
+        guard let twitterSession = self.sessionRepository.findBy(session: session) else {
+            return Observable.error(NoSessionError(requestedSession: session))
+        }
+
+        var params = Alamofire.Parameters()
+        params["id"] = tweet.id.value.description
+        // TODO: update tweet like progress
+        return self.client.post(path: "/1.1/favorites/create.json", session: twitterSession, parameters: params)
+                .do(onNext: { _ in
+                    // TODO: update tweet like status
+                    // TODO: update tweet like progress
+                })
+                .map { _ in
+                }
+    }
 }

@@ -10,6 +10,7 @@ class TimelineViewModel {
     private let disposeBag = DisposeBag()
     private let loginUseCase: LoginUseCase
     private let getHomeTimelineUseCase: GetHomeTimelineUseCase
+    private let likeTweetUseCase: LikeTweetUseCase
 
     private let isProcessingVar = Variable<Bool>(false)
     var isProcessing: Observable<Bool> {
@@ -31,9 +32,10 @@ class TimelineViewModel {
         return tweetsVar.asObservable()
     }
 
-    init(loginUseCase: LoginUseCase, getHomeTimelineUseCase: GetHomeTimelineUseCase) {
+    init(loginUseCase: LoginUseCase, getHomeTimelineUseCase: GetHomeTimelineUseCase, likeTweetUseCase: LikeTweetUseCase) {
         self.loginUseCase = loginUseCase
         self.getHomeTimelineUseCase = getHomeTimelineUseCase
+        self.likeTweetUseCase = likeTweetUseCase
     }
 
     func login() {
@@ -66,7 +68,14 @@ class TimelineViewModel {
     }
 
     func like(tweet: Tweet) {
-        // TODO: like tweet
-        print("like \(tweet)")
+        guard let sess = sessionVar.value else {
+            return
+        }
+        self.likeTweetUseCase.like(tweet: tweet, session: sess)
+                .subscribe(
+                        onError: { [weak self] error in
+                            self?.errorSubject.onNext(error)
+                        }
+                ).disposed(by: disposeBag)
     }
 }

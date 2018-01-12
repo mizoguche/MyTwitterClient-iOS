@@ -8,7 +8,25 @@ import Alamofire
 import RxSwift
 import SwiftyJSON
 
-class NoDataError: Error {
+struct NoDataError: Error {
+}
+
+struct TwitterErrorEntity {
+    let code: Int
+    let message: String
+
+    init(code: Int, message: String) {
+        self.code = code
+        self.message = message
+    }
+}
+
+struct TwitterError: Error {
+    let errors: [TwitterErrorEntity]?
+
+    init(errors: [TwitterErrorEntity]?) {
+        self.errors = errors
+    }
 }
 
 class TwitterApiClient {
@@ -22,20 +40,28 @@ class TwitterApiClient {
         return "https://api.twitter.com\(path)"
     }
 
-    private func createAuthorizationHeader(url: String, session: TWTRSession) -> HTTPHeaders {
+    private func createAuthorizationHeader(session: TWTRSession, method: HTTPMethod, url: String, parameters: Parameters? = nil) -> HTTPHeaders {
         let sign = TWTROAuthSigning(authConfig: config, authSession: session)
         let error = NSErrorPointer(nilLiteral: ())
-        let authorization = sign.oAuthEchoHeaders(forRequestMethod: "GET", urlString: url, parameters: nil, error: error)[TWTROAuthEchoAuthorizationHeaderKey]
+        let authorization = sign.oAuthEchoHeaders(forRequestMethod: method.rawValue.uppercased(), urlString: url, parameters: parameters, error: error)[TWTROAuthEchoAuthorizationHeaderKey]
         var headers = HTTPHeaders()
         headers["Authorization"] = authorization as? String
         return headers
     }
 
     func get(path: String, session: TWTRSession) -> Observable<JSON> {
-        let url = createUrlString(path: "/1.1/statuses/home_timeline.json")
-        let headers = createAuthorizationHeader(url: url, session: session)
+        return request(path: path, session: session, method: .get)
+    }
+
+    func post(path: String, session: TWTRSession, parameters: Parameters) -> Observable<JSON> {
+        return request(path: path, session: session, method: .post, parameters: parameters)
+    }
+
+    private func request(path: String, session: TWTRSession, method: HTTPMethod, parameters: Parameters? = nil) -> Observable<JSON> {
+        let url = createUrlString(path: path)
+        let headers = createAuthorizationHeader(session: session, method: method, url: url, parameters: parameters)
         return Observable.create { observer in
-            Alamofire.request(url, headers: headers).response { response in
+            Alamofire.request(url, method: method, parameters: parameters, headers: headers).response { response in
                 guard response.error == nil else {
                     observer.onError(response.error!)
                     return
@@ -48,6 +74,17 @@ class TwitterApiClient {
 
                 do {
                     let json = try JSON(data: data)
+
+                    if response.response?.statusCode != nil && response.response!.statusCode > 399 {
+                        let errors = json["errors"].array
+                        let es = errors.map { js in
+                            js.map { json in
+                                TwitterErrorEntity(code: json["code"].intValue, message: json["message"].stringValue)
+                            }
+                        }
+                        observer.onError(TwitterError(errors: es))
+                        return
+                    }
                     observer.onNext(json)
                     observer.onCompleted()
 
