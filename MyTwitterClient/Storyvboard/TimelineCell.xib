@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineCell" rowHeight="100" id="Jx8-KL-x39" customClass="TimelineCell" customModule="MyTwitterClient" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineCell" rowHeight="131" id="Jx8-KL-x39" customClass="TimelineCell" customModule="MyTwitterClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jx8-KL-x39" id="9rR-KL-EWK">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="130.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cdH-mz-2Zj">
@@ -44,12 +44,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4J-dd-tbu">
-                        <rect key="frame" x="70" y="32" width="285" height="55"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4J-dd-tbu">
+                        <rect key="frame" x="70" y="32" width="285" height="52"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FB8-2b-FjJ">
+                        <rect key="frame" x="68" y="92" width="30" height="28"/>
+                        <state key="normal" title="Like"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="B4J-dd-tbu" secondAttribute="trailing" constant="20" symbolic="YES" id="3oi-VZ-Bjc"/>
@@ -57,21 +61,24 @@
                     <constraint firstItem="G2u-SU-yHb" firstAttribute="leading" secondItem="5c7-cL-z1R" secondAttribute="trailing" id="6SZ-Dq-NK6"/>
                     <constraint firstItem="cdH-mz-2Zj" firstAttribute="leading" secondItem="9rR-KL-EWK" secondAttribute="leadingMargin" id="C2p-G7-hma"/>
                     <constraint firstItem="B4J-dd-tbu" firstAttribute="leading" secondItem="9rR-KL-EWK" secondAttribute="leading" constant="70" id="E5e-s8-bGr"/>
+                    <constraint firstAttribute="bottom" secondItem="FB8-2b-FjJ" secondAttribute="bottom" constant="10.5" id="Hke-Px-Vw9"/>
                     <constraint firstItem="G2u-SU-yHb" firstAttribute="top" secondItem="9rR-KL-EWK" secondAttribute="top" constant="12" id="OtX-kR-mSe"/>
                     <constraint firstItem="B4J-dd-tbu" firstAttribute="top" secondItem="9rR-KL-EWK" secondAttribute="top" constant="32" id="SFm-PH-Vp3"/>
-                    <constraint firstAttribute="bottom" secondItem="B4J-dd-tbu" secondAttribute="bottom" constant="12" id="nmN-Fl-pWT"/>
+                    <constraint firstItem="FB8-2b-FjJ" firstAttribute="top" secondItem="B4J-dd-tbu" secondAttribute="bottom" constant="8" id="hXR-YM-dcw"/>
+                    <constraint firstItem="FB8-2b-FjJ" firstAttribute="leading" secondItem="9rR-KL-EWK" secondAttribute="leading" constant="68" id="sHD-Lt-5sx"/>
                     <constraint firstItem="cdH-mz-2Zj" firstAttribute="top" secondItem="9rR-KL-EWK" secondAttribute="top" constant="12" id="sVb-mF-G3p"/>
                     <constraint firstItem="5c7-cL-z1R" firstAttribute="leading" secondItem="cdH-mz-2Zj" secondAttribute="trailing" constant="8" id="tQY-H4-eAG"/>
                     <constraint firstItem="5c7-cL-z1R" firstAttribute="top" secondItem="9rR-KL-EWK" secondAttribute="top" constant="12" id="tXT-pM-Vd5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="likeButton" destination="FB8-2b-FjJ" id="tch-Vr-zwn"/>
                 <outlet property="name" destination="5c7-cL-z1R" id="fM2-Nw-PQX"/>
                 <outlet property="profileImageView" destination="cdH-mz-2Zj" id="ezO-I9-H97"/>
                 <outlet property="screenName" destination="G2u-SU-yHb" id="fgA-Rg-h1f"/>
                 <outlet property="textBody" destination="B4J-dd-tbu" id="kWA-uG-qXn"/>
             </connections>
-            <point key="canvasLocation" x="295.5" y="204"/>
+            <point key="canvasLocation" x="295.5" y="219.5"/>
         </tableViewCell>
     </objects>
 </document>

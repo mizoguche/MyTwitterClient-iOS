@@ -6,14 +6,26 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import RxCocoa
+import RxSwift
 
 class TimelineCell: UITableViewCell {
     static let identifier = "TimelineCell"
+    private let disposeBag = DisposeBag()
 
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var screenName: UILabel!
     @IBOutlet var textBody: UILabel!
+    @IBOutlet var likeButton: UIButton!
+
+    var onLike: Observable<Void>!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.onLike = self.likeButton.rx.tap.map { _ in
+        }
+    }
 
     func show(tweet: Tweet) {
         name.text = tweet.user.name.value

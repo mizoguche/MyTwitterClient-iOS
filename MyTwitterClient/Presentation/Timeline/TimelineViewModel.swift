@@ -64,4 +64,9 @@ class TimelineViewModel {
                         }
                 ).disposed(by: disposeBag)
     }
+
+    func like(tweet: Tweet) {
+        // TODO: like tweet
+        print("like \(tweet)")
+    }
 }

@@ -11,6 +11,7 @@ import RxSwift
 
 class TimelineViewController: UITableViewController {
     private let disposeBag = DisposeBag()
+    private var subscription = [TimelineCell: [Disposable]]()
 
     var viewModel: TimelineViewModel!
 
@@ -48,7 +49,7 @@ class TimelineViewController: UITableViewController {
     }
 
     override func tableView(_ table: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+                            numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.tweetsVar.value.count
     }
 
@@ -56,10 +57,29 @@ class TimelineViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: TimelineCell.identifier) as! TimelineCell
         let tweet = self.viewModel.tweetsVar.value[indexPath.row]
         cell.show(tweet: tweet)
+        subscribeButtons(tweet: tweet, cell: cell)
         return cell
+    }
+
+    private func subscribeButtons(tweet: Tweet, cell: TimelineCell) {
+        if let subscriptions = subscription[cell] {
+            subscriptions.forEach { disposable in
+                disposable.dispose()
+            }
+        }
+        subscription[cell] = []
+        subscription[cell]?.append(cell.onLike.subscribe(onNext: { [weak self, tweet] _ in self?.viewModel.like(tweet: tweet) }))
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    deinit {
+        subscription.forEach { _, value in
+            value.forEach { disposable in
+                disposable.dispose()
+            }
+        }
     }
 }
