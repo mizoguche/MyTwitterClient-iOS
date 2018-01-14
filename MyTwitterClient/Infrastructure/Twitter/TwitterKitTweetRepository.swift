@@ -31,7 +31,7 @@ class TwitterKitTweetRepository: TweetRepository {
         }
 
         var params = Parameters()
-        params["count"] = 200.description
+        params["count"] = 20.description
         return self.client.get(path: "/1.1/statuses/home_timeline.json", session: twitterSession, parameters: params)
                 .map {
                     TwitterMapper.mapToTweets(json: $0, session: session)
@@ -61,13 +61,31 @@ class TwitterKitTweetRepository: TweetRepository {
         }
 
         var params = Parameters()
-        params["count"] = 200.description
+        params["count"] = 20.description
         params["since_id"] = tweets.latestId.value.description
         return self.client.get(path: "/1.1/statuses/home_timeline.json", session: twitterSession, parameters: params)
                 .map {
                     let latest = TwitterMapper.mapToTweets(json: $0, session: tweets.session)
                     latest.appendAll(tweets: tweets)
                     return latest
+                }
+    }
+
+    func getEarlier(tweets: Tweets) -> Observable<Tweets> {
+        guard let twitterSession = self.sessionRepository.findBy(session: tweets.session) else {
+            return Observable.error(NoSessionError(requestedSession: tweets.session))
+        }
+
+        var params = Parameters()
+        params["count"] = 20.description
+        params["max_id"] = tweets.earliestId.value.description
+        return self.client.get(path: "/1.1/statuses/home_timeline.json", session: twitterSession, parameters: params)
+                .map {
+                    let earlier = TwitterMapper.mapToTweets(json: $0, session: tweets.session)
+                    if earlier.count > 1 {
+                        tweets.appendWithoutFirst(tweets: earlier)
+                    }
+                    return tweets
                 }
     }
 }

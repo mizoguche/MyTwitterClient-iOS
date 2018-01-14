@@ -23,9 +23,13 @@ class TimelineViewController: UITableViewController {
             self?.viewModel.getLatest()
         }
 
+        self.tableView.es.addInfiniteScrolling { [weak self] () in
+            self?.viewModel.getEarlier()
+        }
+
         viewModel.isProcessing.subscribe(onNext: { [weak self] isProcessing in
             if !isProcessing {
-                self?.tableView.es.stopPullToRefresh()
+                self?.tableView.es.stopLoadingMore()
             }
         }).disposed(by: disposeBag)
 

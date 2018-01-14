@@ -12,6 +12,7 @@ class TimelineViewModel {
     private let getHomeTimelineUseCase: GetHomeTimelineUseCase
     private let likeTweetUseCase: LikeTweetUseCase
     private let getLatestTweetsUseCase: GetLatestTweetsUseCase
+    private let getEarlierTweetsUseCase: GetEarlierTweetsUseCase
 
     private let isProcessingVar = Variable<Bool>(false)
     var isProcessing: Observable<Bool> {
@@ -37,12 +38,14 @@ class TimelineViewModel {
             loginUseCase: LoginUseCase,
             getHomeTimelineUseCase: GetHomeTimelineUseCase,
             likeTweetUseCase: LikeTweetUseCase,
-            getLatestTweetsUseCase: GetLatestTweetsUseCase
+            getLatestTweetsUseCase: GetLatestTweetsUseCase,
+            getEarlierTweetsUseCase: GetEarlierTweetsUseCase
     ) {
         self.loginUseCase = loginUseCase
         self.getHomeTimelineUseCase = getHomeTimelineUseCase
         self.likeTweetUseCase = likeTweetUseCase
         self.getLatestTweetsUseCase = getLatestTweetsUseCase
+        self.getEarlierTweetsUseCase = getEarlierTweetsUseCase
     }
 
     func login() {
@@ -94,17 +97,25 @@ class TimelineViewModel {
 
     func getLatest() {
         isProcessingVar.value = true
-        self.getLatestTweetsUseCase.get(tweets: tweetsVar.value)
-                .subscribe(
-                        onNext: { [weak self] tweets in
-                            self?.tweetsVar.value = tweets
-                        },
-                        onError: { [weak self] error in
-                            self?.errorSubject.onNext(error)
-                        },
-                        onCompleted: { [weak self] in
-                            self?.isProcessingVar.value = false
-                        }
-                ).disposed(by: disposeBag)
+        updateTweets(observable: self.getLatestTweetsUseCase.get(tweets: tweetsVar.value))
+    }
+
+    func getEarlier() {
+        isProcessingVar.value = true
+        updateTweets(observable: self.getEarlierTweetsUseCase.get(tweets: tweetsVar.value))
+    }
+
+    private func updateTweets(observable: Observable<Tweets>) {
+        return observable.subscribe(
+                onNext: { [weak self] tweets in
+                    self?.tweetsVar.value = tweets
+                },
+                onError: { [weak self] error in
+                    self?.errorSubject.onNext(error)
+                },
+                onCompleted: { [weak self] in
+                    self?.isProcessingVar.value = false
+                }
+        ).disposed(by: disposeBag)
     }
 }

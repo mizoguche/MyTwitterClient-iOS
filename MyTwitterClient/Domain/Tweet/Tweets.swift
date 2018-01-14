@@ -18,7 +18,11 @@ class Tweets {
     }
 
     var latestId: TweetId {
-        return value[0].id
+        return value.first!.id
+    }
+
+    var earliestId: TweetId {
+        return value.last!.id
     }
 
     init(tweets: [Tweet] = [], session: Session = Session.Empty) {
@@ -34,5 +38,9 @@ class Tweets {
 
     func appendAll(tweets: Tweets) {
         self.value.append(contentsOf: tweets.value)
+    }
+
+    func appendWithoutFirst(tweets: Tweets) {
+        self.value.append(contentsOf: tweets.value[1...(tweets.count - 1)])
     }
 }

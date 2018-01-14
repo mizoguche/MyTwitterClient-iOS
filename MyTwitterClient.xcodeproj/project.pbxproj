@@ -44,6 +44,7 @@
 		B582FC8123D12F7AF5950AA2 /* GetHomeTimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */; };
 		B582FCC76FE2F91F6F4CDDB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FA5749D5E90724741FFD /* User.swift */; };
 		B582FED62031D5CA399634BF /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FCA0BB5E787C93B1B197 /* Tweets.swift */; };
+		B582FF2C5E9132AED0C93F82 /* GetEarlierTweetsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582F98BECB7C083ACD496D7 /* GetEarlierTweetsUseCase.swift */; };
 		B582FF83D6CCE82BF7E26B3F /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582FC68704FA6CBC3A142C6 /* TimelineDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		B582F5F37681FADE35D0BC7C /* LoginUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		B582F6E98576382F278A2E56 /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		B582F850B30406F718880BC2 /* GetLatestTweetsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLatestTweetsUseCase.swift; sourceTree = "<group>"; };
+		B582F98BECB7C083ACD496D7 /* GetEarlierTweetsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetEarlierTweetsUseCase.swift; sourceTree = "<group>"; };
 		B582FA5749D5E90724741FFD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B582FA68611CB81802B0DAA9 /* TwitterKitTweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKitTweetRepository.swift; sourceTree = "<group>"; };
 		B582FC68704FA6CBC3A142C6 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDataSource.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				B582F01492F8BFDF9C3A4E26 /* GetHomeTimelineUseCase.swift */,
 				B582FCEDA498EFCD2B13B42E /* LikeTweetUseCase.swift */,
 				B582F850B30406F718880BC2 /* GetLatestTweetsUseCase.swift */,
+				B582F98BECB7C083ACD496D7 /* GetEarlierTweetsUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				B582F496B2BDBA8BAFA27739 /* TimelineCell.swift in Sources */,
 				B582F700EEA967BC0D7BBBA0 /* LikeTweetUseCase.swift in Sources */,
 				B582F8B3104F3B4EE8E9A3E4 /* GetLatestTweetsUseCase.swift in Sources */,
+				B582FF2C5E9132AED0C93F82 /* GetEarlierTweetsUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
