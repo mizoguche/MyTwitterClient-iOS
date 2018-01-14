@@ -59,6 +59,10 @@ class DependencyRegistry {
         defaultContainer.register(LikeTweetUseCase.self) { r in
             LikeTweetUseCase(tweetRepository: r.resolve(TweetRepository.self)!)
         }.inObjectScope(.container)
+
+        defaultContainer.register(GetLatestTweetsUseCase.self) { r in
+            GetLatestTweetsUseCase(tweetRepository: r.resolve(TweetRepository.self)!)
+        }.inObjectScope(.container)
     }
 
     static private func setupViewModels() {
@@ -66,7 +70,8 @@ class DependencyRegistry {
             TimelineViewModel(
                     loginUseCase: r.resolve(LoginUseCase.self)!,
                     getHomeTimelineUseCase: r.resolve(GetHomeTimelineUseCase.self)!,
-                    likeTweetUseCase: r.resolve(LikeTweetUseCase.self)!
+                    likeTweetUseCase: r.resolve(LikeTweetUseCase.self)!,
+                    getLatestTweetsUseCase: r.resolve(GetLatestTweetsUseCase.self)!
             )
         }.inObjectScope(.transient)
     }

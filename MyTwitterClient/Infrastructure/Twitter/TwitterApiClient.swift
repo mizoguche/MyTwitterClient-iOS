@@ -49,8 +49,8 @@ class TwitterApiClient {
         return headers
     }
 
-    func get(path: String, session: TWTRSession) -> Observable<JSON> {
-        return request(path: path, session: session, method: .get)
+    func get(path: String, session: TWTRSession, parameters: Parameters? = nil) -> Observable<JSON> {
+        return request(path: path, session: session, method: .get, parameters: parameters)
     }
 
     func post(path: String, session: TWTRSession, parameters: Parameters) -> Observable<JSON> {

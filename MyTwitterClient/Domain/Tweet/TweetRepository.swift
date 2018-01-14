@@ -8,4 +8,5 @@ import RxSwift
 protocol TweetRepository {
     func getHomeTimeline(session: Session) -> Observable<Tweets>
     func like(tweet: Tweet, session: Session) -> Observable<Void>
+    func getLatest(tweets: Tweets) -> Observable<Tweets>
 }

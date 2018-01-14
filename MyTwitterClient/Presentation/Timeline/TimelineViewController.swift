@@ -19,7 +19,8 @@ class TimelineViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.es.addPullToRefresh { () in
+        self.tableView.es.addPullToRefresh { [weak self] () in
+            self?.viewModel.getLatest()
         }
 
         viewModel.isProcessing.subscribe(onNext: { [weak self] isProcessing in

@@ -11,6 +11,7 @@ class TimelineViewModel {
     private let loginUseCase: LoginUseCase
     private let getHomeTimelineUseCase: GetHomeTimelineUseCase
     private let likeTweetUseCase: LikeTweetUseCase
+    private let getLatestTweetsUseCase: GetLatestTweetsUseCase
 
     private let isProcessingVar = Variable<Bool>(false)
     var isProcessing: Observable<Bool> {
@@ -27,27 +28,34 @@ class TimelineViewModel {
         return sessionVar.asObservable()
     }
 
-    let tweetsVar = Variable<Tweets>(Tweets(tweets: []))
+    let tweetsVar = Variable<Tweets>(Tweets())
     var tweets: Observable<Tweets> {
         return tweetsVar.asObservable()
     }
 
-    init(loginUseCase: LoginUseCase, getHomeTimelineUseCase: GetHomeTimelineUseCase, likeTweetUseCase: LikeTweetUseCase) {
+    init(
+            loginUseCase: LoginUseCase,
+            getHomeTimelineUseCase: GetHomeTimelineUseCase,
+            likeTweetUseCase: LikeTweetUseCase,
+            getLatestTweetsUseCase: GetLatestTweetsUseCase
+    ) {
         self.loginUseCase = loginUseCase
         self.getHomeTimelineUseCase = getHomeTimelineUseCase
         self.likeTweetUseCase = likeTweetUseCase
+        self.getLatestTweetsUseCase = getLatestTweetsUseCase
     }
 
     func login() {
         isProcessingVar.value = true
         self.loginUseCase.login().subscribe(
                 onNext: { [weak self] session in
-                    self?.isProcessingVar.value = false
                     self?.sessionVar.value = session
                 },
                 onError: { [weak self] error in
-                    self?.isProcessingVar.value = false
                     self?.errorSubject.onNext(error)
+                },
+                onCompleted: { [weak self] in
+                    self?.isProcessingVar.value = false
                 }
         ).disposed(by: disposeBag)
     }
@@ -56,6 +64,8 @@ class TimelineViewModel {
         guard let sess = sessionVar.value else {
             return
         }
+
+        isProcessingVar.value = true
         self.getHomeTimelineUseCase.get(session: sess)
                 .subscribe(
                         onNext: { [weak self] tweets in
@@ -63,6 +73,9 @@ class TimelineViewModel {
                         },
                         onError: { [weak self] error in
                             self?.errorSubject.onNext(error)
+                        },
+                        onCompleted: { [weak self] in
+                            self?.isProcessingVar.value = false
                         }
                 ).disposed(by: disposeBag)
     }
@@ -75,6 +88,22 @@ class TimelineViewModel {
                 .subscribe(
                         onError: { [weak self] error in
                             self?.errorSubject.onNext(error)
+                        }
+                ).disposed(by: disposeBag)
+    }
+
+    func getLatest() {
+        isProcessingVar.value = true
+        self.getLatestTweetsUseCase.get(tweets: tweetsVar.value)
+                .subscribe(
+                        onNext: { [weak self] tweets in
+                            self?.tweetsVar.value = tweets
+                        },
+                        onError: { [weak self] error in
+                            self?.errorSubject.onNext(error)
+                        },
+                        onCompleted: { [weak self] in
+                            self?.isProcessingVar.value = false
                         }
                 ).disposed(by: disposeBag)
     }

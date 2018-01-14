@@ -6,5 +6,7 @@
 import RxSwift
 
 struct Session {
+    static let Empty = Session(screenName: ScreenName(value: ""))
+
     let screenName: ScreenName
 }

@@ -6,10 +6,12 @@
 import SwiftyJSON
 
 class TwitterMapper {
-    static func mapToTweets(json: JSON) -> Tweets {
-        return Tweets(tweets: json.map { (_, json) in
-            mapToTweet(json: json)
-        })
+    static func mapToTweets(json: JSON, session: Session) -> Tweets {
+        return Tweets(
+                tweets: json.map { (_, json) in
+                    mapToTweet(json: json)
+                },
+                session: session)
     }
 
     static func mapToTweet(json: JSON) -> Tweet {
