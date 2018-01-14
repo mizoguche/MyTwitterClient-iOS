@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import ESPullToRefresh
 
 class TimelineViewController: UITableViewController {
     private let disposeBag = DisposeBag()
@@ -18,13 +19,17 @@ class TimelineViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.isProcessing.subscribe(onNext: { isProcessing in
-            // TODO: Show activity indicator
-            print("isProcessing: \(isProcessing)")
+        self.tableView.es.addPullToRefresh { () in
+        }
+
+        viewModel.isProcessing.subscribe(onNext: { [weak self] isProcessing in
+            if !isProcessing {
+                self?.tableView.es.stopPullToRefresh()
+            }
         }).disposed(by: disposeBag)
 
-        viewModel.error.subscribe(onNext: { error in
-            // TODO: Show alert dialog
+        viewModel.error.subscribe(onNext: { [weak self] error in
+            self?.tableView.es.stopPullToRefresh()
             print(error)
         }).disposed(by: disposeBag)
 
