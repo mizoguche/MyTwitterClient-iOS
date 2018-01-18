@@ -34,8 +34,11 @@ class TimelineViewController: UITableViewController {
             }
         }).disposed(by: disposeBag)
 
-        viewModel.error.subscribe(onNext: { error in
-            print(error)
+        viewModel.error.subscribe(onNext: { [weak self] error in
+            let ac = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            ac.addAction(okAction)
+            self?.present(ac, animated: true, completion: nil)
         }).disposed(by: disposeBag)
 
         viewModel.session.filter {
