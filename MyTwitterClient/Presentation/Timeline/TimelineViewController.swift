@@ -29,12 +29,12 @@ class TimelineViewController: UITableViewController {
 
         viewModel.isProcessing.subscribe(onNext: { [weak self] isProcessing in
             if !isProcessing {
+                self?.tableView.es.stopPullToRefresh()
                 self?.tableView.es.stopLoadingMore()
             }
         }).disposed(by: disposeBag)
 
-        viewModel.error.subscribe(onNext: { [weak self] error in
-            self?.tableView.es.stopPullToRefresh()
+        viewModel.error.subscribe(onNext: { error in
             print(error)
         }).disposed(by: disposeBag)
 
