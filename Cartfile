@@ -8,3 +8,4 @@ github "Alamofire/Alamofire" ~> 4.5
 github "SwiftyJSON/SwiftyJSON" ~> 4.0.0
 github "Alamofire/AlamofireImage" ~> 3.3
 github "eggswift/pull-to-refresh"
+github "Moya/Moya"
